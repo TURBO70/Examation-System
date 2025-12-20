@@ -1,0 +1,162 @@
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #ffffff;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.signup {
+    flex: 1;
+    padding: 40px;
+     
+}
+.signup, .signin {
+    background: #ffffff;
+    flex: 1;
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    transition: 0.9s ease;
+    
+}
+
+form {
+    max-width: 400px;
+     position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    background: white;
+    transition: 0.9s ease;
+}
+
+label {
+    display: block;
+    margin: 15px 0 5px;
+    color: #757575;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    color: #9E9E9E;
+}
+.input-box {
+    position: relative;
+}
+
+.icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+}
+
+.eye {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.input-box input {
+    padding-left: 45px;
+    padding-right: 45px;
+}
+
+
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 25px;
+    border: none;
+    background: #506d7b;
+    color: white;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.image-box {
+     position: absolute;
+    width: 50%;
+    height: 100%;
+    right: 0;
+    flex: 1;
+    background: #e9e6df;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: 0.9s ease;
+    
+}
+
+.image-box img {
+    max-width: 50%;
+}
+
+.signin-btn {
+     margin-top: 30px;
+    padding: 10px 30px;
+    cursor: pointer;
+    width: 50%;
+    border-radius: 25px;
+    background: transparent;
+    border: 1px solid #506d7b;
+    color: #000;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .image-box {
+        padding: 20px;
+    }
+}
+
+.signup {
+    left: 0;
+}
+
+.signin {
+    left: 100%;
+}
+
+.container.active .image-box {
+    transform: translateX(-100%);
+}
+
+.container.active .signup {
+    transform: translateX(200%);
+}
+
+.container.active .signin {
+    transform: translateX(-100%);
+}

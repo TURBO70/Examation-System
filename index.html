@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="signup">
+        <h2>Create Account</h2>
+
+        <form id="register-Form">
+            <label>Name</label>
+            <div class="input-box">
+    <span class="material-icons icon">person</span>
+    <input type="text" id="signup_name" placeholder="Enter your name">
+     </div>
+     <label>Email</label>
+      <div class="input-box">
+    <span class="material-icons icon">email</span>
+    <input type="email" id="signup_email" placeholder="email@gmail.com">
+     </div>
+       <label>Password</label>
+             <div class="input-box">
+    <span class="material-icons icon">lock</span>
+    <input type="password" id="signup_password" placeholder="Enter your password">
+     </div>
+
+            <label>Re-enter Password</label>
+              <div class="input-box">
+    <span class="material-icons icon">lock</span>
+    <input type="password" id="signup_confirmPassword" placeholder="Re-enter your password">
+     </div>
+           
+
+            <p class="error" id="error"></p>
+
+            <button type="submit">Create Account</button>
+        </form>
+    </div>
+
+   
+    <div class="image-box">
+        <img src="sign_in.png" alt="illustration">
+        <button class="signin-btn">Sign in</button>
+    </div>
+<div class="signin">
+ <h2>Sign in</h2>
+
+        <form id="register-Form">
+           
+     <label>Email</label>
+      <div class="input-box">
+    <span class="material-icons icon">email</span>
+    <input type="email" id="signin_email" placeholder="email@gmail.com">
+     </div>
+       <label>Password</label>
+             <div class="input-box">
+    <span class="material-icons icon">lock</span>
+    <input type="password" id="signin_password" placeholder="Enter your password">
+     </div>
+           
+            <p class="error" id="error"></p>
+
+            <button type="submit">sign in</button>
+        </form>
+</div>
+   
+
+<script src="script.js"></script>
+</body>
+</html>
