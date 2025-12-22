@@ -23,7 +23,7 @@ form.addEventListener("submit", function (e) {
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
 
     if (!nameRegex.test(name)) {
-        error.textContent = "Name must be first and last name (e.g. Youssef Mohamed,Eman Refaat)";
+        error.textContent = "Name must be first and last name (e.g. Youssef Mohamed, Eman Refaat)";
         return;
     }
 
