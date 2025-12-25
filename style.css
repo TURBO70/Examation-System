@@ -194,20 +194,30 @@ button {
 
 .signup {
     left: 0;
+    z-index: 2;
 }
 
 .signin {
-    left: 100%;
+    left: 0;
+     z-index: 1;
 }
 
 .container.active .image-box {
-    transform: translateX(-100%);
+    transform: translateX(-100%) ;
 }
 
 .container.active .signup {
-    transform: translateX(200%);
+     z-index: 2;
+.signin {
+     z-index: 1;
+}
+    transform: translateX(100%) ;
 }
 
 .container.active .signin {
-    transform: translateX(-100%);
+    z-index: 2;
+.signup {
+     z-index: 1;
+}
+    transform: translateX(100%) ;
 }
