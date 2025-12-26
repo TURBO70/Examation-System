@@ -3,15 +3,16 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>task2</title>
+        <title>home</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
         <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
         
     </head>
-    <body >
- <div class="navbar bg-[#4B687A] shadow-sm text-white">
+    <body class="min-h-screen relative overflow-hidden ">
+ <div class="navbar bg-[#4B687A] shadow-sm text-white font-serif">
   <div class="navbar-start">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -35,24 +36,68 @@
     </ul>
   </div>
   <div class="navbar-end ">
-    <a class="btn me-5 bg-white text-[#718c9e]  hover:bg-[#99aebc] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-900" href="sign_in.html" >Sign in</a>
-      <a class="btn bg-[#99acb9] hover:bg-white hover:text-[#718c9e] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-900" href="sign_in.html" >Sign up</a>
+    <a id="signInBtn" class="btn me-5 bg-white text-[#718c9e]  hover:bg-[#99aebc] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-900" href="sign_in.html" >Sign in</a>
+      <a id="signUpBtn" class="btn bg-[#99acb9] hover:bg-white hover:text-[#718c9e] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-900" href="sign_in.html" >Sign up</a>
   </div>
 </div>
 
 <!----------------------------------------------------------------------------------->
+<div class="flex flex-col items-center text-center gap-4 sm:gap-5 px-4 sm:px-6 z-10">
 
-<div class="flex flex-col items-center gap-5 content-center">
-<p class="mt-16 text-3xl">Welcome, Student!</p>
-<p class="mb-15 text-[#747474] font-light text-lg">Stay focused, stay confident, and good luck!</p>
-<img class="w-6/20" src="assets/home.png" alt="">
+  <p class="mt-10 sm:mt-12 md:mt-16 
+            text-2xl sm:text-3xl md:text-4xl 
+            font-medium">
+    Welcome, Student!
+  </p>
+
+  <p class="text-[#747474] font-light 
+            text-sm sm:text-base md:text-lg 
+            max-w-md">
+    Stay focused, stay confident, and good luck!
+  </p>
+
+  <img 
+    class="w-[85%] 
+           sm:w-[70%] 
+           md:w-[55%] 
+           lg:w-[40%] 
+           max-w-md"
+    src="assets/home.png" 
+    alt=""
+  >
 </div>
-<div class="flex justify-end m-10">
-    <button class="btn btn-xs bg-[#4B687A] text-white p-5 sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl rounded-full">Start your exam</button>
+
+
+<div class="flex justify-end md:justify-end mt-8 md:m-10 z-10">
+  <button class="bg-[#4B687A] text-white px-8 py-3 md:px-12 md:py-4 
+                 rounded-full text-sm md:text-base lg:text-lg">
+    Start your exam
+  </button>
+</div>
+
+<div class="absolute hidden sm:block inset-y-0 left-0 lg: inset-0 -z-10 overflow-hidden">
+
+  <div class="absolute 
+              top-32 sm:top-40 md:top-48
+              -left-40 sm:-left-48 md:-left-56
+              w-72 sm:w-96 md:w-[420px]
+              h-[520px] sm:h-[650px] md:h-[800px]
+              bg-[#4B687A]/20 rounded-full">
+  </div>
+
+  <div class="absolute 
+              top-44 sm:top-56 md:top-64
+              -left-48 sm:-left-56 md:-left-64
+              w-64 sm:w-80 md:w-[380px]
+              h-[520px] sm:h-[650px] md:h-[800px]
+              bg-[#4B687A] rounded-full">
+  </div>
+
 </div>
 
 
 
+<script src="js/nav.js"></script>
 
     </body>
 </html>

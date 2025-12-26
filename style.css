@@ -1,4 +1,8 @@
 
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
 * {
     box-sizing: border-box;
     font-family: Arial, sans-serif;
@@ -125,6 +129,7 @@ input {
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
+    color: #777;
 }
 
 .input-box input {
@@ -144,11 +149,17 @@ button {
     margin-top: 20px;
     cursor: pointer;
 }
+button:hover {
+  background: black;
+  color: white;
+  transform: translateY(-2px);
+}
 
 .error {
     color: red;
-    font-size: 14px;
-    margin-top: 10px;
+    font-size: 0.85rem;
+    margin-top: 3px;
+    display: block;
 }
 
 .image-box {
@@ -182,16 +193,6 @@ button {
     color: #000;
 }
 
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-
-    .image-box {
-        padding: 20px;
-    }
-}
-
 .signup {
     left: 0;
     z-index: 2;
@@ -220,4 +221,15 @@ button {
      z-index: 1;
 }
     transform: translateX(100%) ;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .image-box {
+        padding: 20px;
+    }
 }
