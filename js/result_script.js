@@ -18,7 +18,7 @@ document.getElementById("summary").innerHTML =
   SummaryComponent(total, correct, wrong, grade);
 
 document.getElementById("progress").innerHTML =
-  ProgressCircle(percent);
+  ProgressCircle(percent , grade);
 
 document.getElementById("userMessage").textContent =
   `Congratulations, Youssef`;

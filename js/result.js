@@ -1,7 +1,7 @@
 function SummaryComponent(total, correct, wrong, grade) {
   return `
     <div class="grid grid-cols-4 gap-4 text-center">
-      <div class="bg-gray-200 p-4 rounded-xl">
+      <div class="bg-[#C8D5DC] p-4 rounded-xl">
         <p class="font-semibold">Total Questions</p>
         <p>${total}</p>
       </div>
@@ -16,7 +16,7 @@ function SummaryComponent(total, correct, wrong, grade) {
         <p>${wrong}</p>
       </div>
 
-      <div class="bg-[#8fb0c3] text-white p-4 rounded-xl">
+      <div class="bg-[#86A9BF] text-white p-4 rounded-xl">
         <p class="font-semibold">Grade</p>
         <p>${grade}</p>
       </div>
