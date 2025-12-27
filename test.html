@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>test</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+
+        
+    </head>
+<body>
+  
+<button class="btn" onclick="my_modal_1.showModal()">open modal 1</button>
+<dialog id="my_modal_1" class="modal modal-middle">
+  <div class="modal-box">
+    <img src="assets/Success.png" class="w-1/6 m-auto ">
+    <h3 class="text-lg font-bold text-center pt-4">The exam has been submitted successfully.</h3>
+    <p class="py-2 text-center">Your responses have been recorded, and the submission process is complete.</p>
+    <div class="modal-action">
+        <button class="btn w-1/4 bg-[#4bae4f] text-white px-4 py-2 rounded-full hover:bg-[#307133] m-auto ">Result</button>
+    </div>
+  </div>
+</dialog>
+<!------------------------------------------------>
+
+<button class="btn" onclick="my_modal_2.showModal()">open modal 2</button>
+<dialog id="my_modal_2" class="modal modal-middle">
+  <div class="modal-box">
+    <img src="assets/Time_out.png" class="w-1/6 m-auto ">
+    <h3 class="text-lg font-bold text-center pt-4 text-[#BE1414]">Time out!</h3>
+    <p class="py-2 text-center">Your exam has been submitted automatically. Thank you and we wish you the best of luck.</p>
+    <div class="modal-action">
+        <button class="btn w-1/4 bg-[#F3C168] text-black px-4 py-2 rounded-full hover:bg-[#c09b5a] m-auto ">Result</button>
+    </div>
+  </div>
+</dialog>
+<!------------------------------------------------------------------>
+<button class="btn" onclick="my_modal_3.showModal()">open modal 3</button>
+<dialog id="my_modal_3" class="modal modal-middle">
+  <div class="modal-box">
+    <img src="assets/warning.png" class="w-1/6 m-auto ">
+    <h3 class="text-lg font-bold text-center pt-4 text-[#C60000]">Warning!</h3>
+    <p class="py-2 text-center">Only 5 minutes remaining,
+               please review your answers before time runs out </p>
+    <div class="modal-action">
+        <button  class="btn w-1/4 bg-[#F3C168] text-black px-4 py-2 rounded-full hover:bg-[#c09b5a] m-auto " >Continue</button>
+    </div>
+  </div>
+</dialog>
+ 
+<!-------------------------------------------------------------------------->
+<button class="btn" onclick="my_modal_4.showModal()">open modal 4</button>
+<dialog id="my_modal_4" class="modal modal-middle">
+  <div class="modal-box">
+    <img src="assets/Warning2.png" class="w-1/5 m-auto ">
+    <h3 class="text-lg font-bold text-center pt-4 text-[#C60000]">Warning!</h3>
+    <p class="py-2 text-center">You haven’t answered all the questions yet.
+      Please review your answers before submitting and try again  </p>
+    <div class="modal-action">
+        <button  class="btn w-1/4 bg-[#F3C168] text-black px-4 py-2 rounded-full hover:bg-[#c09b5a] m-auto " >Cancel</button>
+    </div>
+  </div>
+</dialog>
+<!------------------------------------------------------------------------------------>
+<button class="btn" onclick="my_modal_5.showModal()">open modal 5</button>
+<dialog id="my_modal_5" class="modal modal-middle">
+  <div class="modal-box">
+    <h3 class="mb-4 text-xl font-bold text-center">Exam Details</h3>
+      <div class="text-left mb-6 ">
+        <p class="mb-2"><strong>Subject :</strong> Computer science</p>
+        <p class="mb-2"><strong>Duration :</strong> 120 minutes</p>
+        <p class="mb-2"><strong>Number of Questions :</strong> 10 questions</p>
+        <p class="mb-2"><strong>Total Marks :</strong> 100 marks</p>
+        <p class="mb-2"><strong>Passing Marks :</strong> 50 marks</p>
+    <div class="modal-action flex justify-between">
+        <button  class="btn w-1/4 bg-[#F3C168] text-black px-4 py-2 rounded-full hover:bg-[#c09b5a] m-auto " >Cancel</button>
+        <button  class="btn w-1/4 bg-[#4bae4f] text-white px-4 py-2 rounded-full hover:bg-[#307133] m-auto" >Start</button>
+
+    </div>
+  </div>
+</dialog>
+<!------------------------------------------------------------------------------------>
+
+
+</body>
+</html>

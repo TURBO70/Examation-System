@@ -1,11 +1,23 @@
 const container = document.querySelector(".container");
 const btn = document.querySelector(".signin-btn");
 const forms = document.querySelectorAll("form");
+const errors = document.querySelectorAll(".error");
 btn.onclick = function () {
     container.classList.toggle("active");
     btn.textContent = container.classList.contains("active") ? "Sign Up" : "Sign In";
     forms.forEach(form => form.reset());
+     errors.forEach(er => er.textContent = "");
 };
+//const container = document.querySelector(".container");
+
+document.getElementById("toSignin").onclick = () => {
+  container.classList.add("active");
+};
+
+document.getElementById("toSignup").onclick = () => {
+  container.classList.remove("active");
+};
+
 /////////////////////////////////////////////////////////////////////////
 const eyes = document.querySelectorAll(".eye");
 eyes.forEach(eye => {

@@ -223,13 +223,56 @@ button:hover {
     transform: translateX(100%) ;
 }
 
+.mobile-switch {
+  display: none;
+}
 
 @media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
 
-    .image-box {
-        padding: 20px;
-    }
+  .mobile-switch {
+    display: block;
+    text-align: center; 
+    margin-top: 15px;
+    font-size: 14px;
+    color: #777;
+  }
+
+  .mobile-switch span {
+    color: #506d7b;
+    font-weight: bold;
+  }
+
+  .image-box {
+    display: none;
+  }
+
+  .signup,
+  .signin {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  form {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .signup {
+    display: block;
+  }
+
+  .signin {
+    display: none;
+  }
+
+  .container.active .signup {
+    display: none;
+  }
+
+  .container.active .signin {
+    display: block;
+  }
 }
