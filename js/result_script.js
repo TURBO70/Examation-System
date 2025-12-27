@@ -21,10 +21,16 @@ document.getElementById("summary").innerHTML =
   SummaryComponent(total, correct, wrong, grade);
 
 document.getElementById("progress").innerHTML =
-  ProgressCircle(percent);
+  ProgressCircle(percent , grade);
 
-document.getElementById("userMessage").textContent =
-  `Congratulations, Youssef`;
+const currentUserJSON = localStorage.getItem("currentUser");
+
+if (currentUserJSON) {
+  const currentUser = JSON.parse(currentUserJSON);
+  const firstName = currentUser.name.trim().split(" ")[0];
+  document.getElementById("userMessage").textContent =
+    `Congratulations, ${firstName}`;
+}
 
 const review = document.getElementById("review");
 questions.forEach((q, i) => {
