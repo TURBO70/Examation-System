@@ -173,7 +173,6 @@ signinForm.addEventListener("submit", function(e){
     if(user){
         localStorage.setItem("currentUser", JSON.stringify(user));
         localStorage.setItem("isLoggedIn", "true");
-        
         window.location.href = "home.html";
     } else {
         PasswordError2.textContent = "Email or password is incorrect!";

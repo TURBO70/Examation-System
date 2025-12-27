@@ -3,17 +3,24 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const signInBtn = document.getElementById('signInBtn');
   const signUpBtn = document.getElementById('signUpBtn');
+if (isLoggedIn) {
+  signInBtn.classList.add('hidden');
 
-  if (isLoggedIn) {
-    signInBtn.style.display = 'none';
-    signUpBtn.textContent = 'Log out'; 
-    signUpBtn.addEventListener('click', () => {
-      localStorage.setItem('isLoggedIn', 'false');
-      location.reload(); 
-    });
-  } else {
-    signInBtn.style.display = 'inline-block';
-    signUpBtn.textContent = 'Sign up';
-    signUpBtn.href = 'sign_in.html';
-  }
+  signUpBtn.textContent = 'Log out';
+  signUpBtn.classList.add('logout-btn');
+  signUpBtn.removeAttribute('href');
+
+  signUpBtn.onclick = () => {
+    localStorage.setItem('isLoggedIn', 'false');
+    location.reload();
+  };
+
+} else {
+  signInBtn.classList.remove('hidden');
+
+  signUpBtn.textContent = 'Sign up';
+  signUpBtn.classList.remove('logout-btn');
+  signUpBtn.href = 'sign_in.html';
+}
+
 });
