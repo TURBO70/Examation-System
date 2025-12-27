@@ -275,7 +275,7 @@ function autoSubmit() {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  initExam();
+  initExam(); 
 
   document.getElementById('prevBtn').addEventListener('click', goToPrevious);
   document.getElementById('nextBtn').addEventListener('click', goToNext);
