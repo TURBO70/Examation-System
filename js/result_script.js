@@ -1,3 +1,6 @@
+const storedAnswers = localStorage.getItem('exam_user_answers');
+const userAnswers = storedAnswers ? JSON.parse(storedAnswers) : new Array(questions.length).fill(null);
+
 const total = questions.length;
 let correct = 0;
 
