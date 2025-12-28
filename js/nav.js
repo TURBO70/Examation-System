@@ -3,24 +3,30 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const signInBtn = document.getElementById('signInBtn');
   const signUpBtn = document.getElementById('signUpBtn');
+  const logOutBtn = document.getElementById('logOutBtn');
 if (isLoggedIn) {
   signInBtn.classList.add('hidden');
+  signUpBtn.classList.add('hidden');
+  logOutBtn.classList.remove('hidden');
 
-  signUpBtn.textContent = 'Log out';
-  signUpBtn.classList.add('logout-btn');
-  signUpBtn.removeAttribute('href');
-
-  signUpBtn.onclick = () => {
+  logOutBtn.onclick = () => {
     localStorage.setItem('isLoggedIn', 'false');
     location.reload();
   };
 
 } else {
-  signInBtn.classList.remove('hidden');
 
-  signUpBtn.textContent = 'Sign up';
-  signUpBtn.classList.remove('logout-btn');
-  signUpBtn.href = 'sign_in.html';
+ signInBtn.classList.remove('hidden');
+  signUpBtn.classList.remove('hidden');
+  logOutBtn.classList.add('hidden');
+    signUpBtn.onclick = () => {
+     location.href = "sign_in.html?mode=signup";
+  };
+
+  signInBtn.onclick = () => {
+     location.href = "sign_in.html?mode=signin";
+  };
+
 }
 
 });

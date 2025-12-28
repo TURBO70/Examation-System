@@ -227,7 +227,15 @@ button:hover {
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1110px) {
+     .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;     
+    min-height: 100vh;       
+    position: relative;
+  }
 
   .mobile-switch {
     display: block;
@@ -240,6 +248,7 @@ button:hover {
   .mobile-switch span {
     color: #506d7b;
     font-weight: bold;
+    cursor: pointer;
   }
 
   .image-box {
@@ -248,18 +257,26 @@ button:hover {
 
   .signup,
   .signin {
-    position: relative;
-    width: 100%;
-    height: auto;
-  }
-
-  form {
-    position: relative;
-    width: 100%;
-    margin: 0;
+     position: relative !important;
+    width: 90% !important;
+    max-width: 400px;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    z-index: auto !important;
+    margin: 0 auto !important;
+    margin-top: 20% !important;
     padding: 20px;
   }
 
+   form {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    padding: 20px;
+  }
   .signup {
     display: block;
   }
@@ -277,6 +294,30 @@ button:hover {
   }
 }
 
+
+
 .hidden {
   display: none !important;
+}
+
+
+#successAlert {
+  position: fixed;
+  bottom: 70px;
+  left: 40px;
+  background-color: #d1fae5; 
+  color: #065f46;
+  padding: 15px 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  z-index: 9999;
+}
+
+#successAlert i {
+  color: #059669;
+  font-size: 20px;
 }

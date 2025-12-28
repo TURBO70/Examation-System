@@ -9,14 +9,30 @@ btn.onclick = function () {
      errors.forEach(er => er.textContent = "");
 };
 //const container = document.querySelector(".container");
-
 document.getElementById("toSignin").onclick = () => {
   container.classList.add("active");
+  document.querySelectorAll('form').forEach(f => f.reset());
+  document.querySelectorAll('.error').forEach(e => e.textContent = "");
 };
 
 document.getElementById("toSignup").onclick = () => {
   container.classList.remove("active");
+  document.querySelectorAll('form').forEach(f => f.reset());
+  document.querySelectorAll('.error').forEach(e => e.textContent = "");
 };
+
+
+
+const params = new URLSearchParams(window.location.search);
+const mode = params.get("mode");
+
+if (mode === "signin") {
+  container.classList.add("active");   
+} else {
+  container.classList.remove("active"); 
+}
+
+
 
 /////////////////////////////////////////////////////////////////////////
 const eyes = document.querySelectorAll(".eye");
@@ -127,11 +143,17 @@ signupForm.addEventListener("submit", function(e){
 
     users.push({name : namee.value.trim(), email: email.value.trim(), password:password.value.trim()});
     localStorage.setItem("users", JSON.stringify(users));
+   const successAlert = document.getElementById("successAlert");
+  successAlert.classList.remove("hidden");
 
-     alert("Account created successfully ✔");
+  setTimeout(() => {
+    successAlert.classList.add("hidden");
+  }, 3000); 
+
     signupForm.reset();
     
 });
+successAlert.classList.add("hidden");
 /////////////////////////////////////////////////////////////////////////////////////
 const signinForm = document.getElementById("signin-form");
 
