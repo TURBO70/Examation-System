@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Exam Result</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
         <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
-</head>
-
-<body class="bg-[#9ec3d4] min-h-screen">
-
-  <div class="navbar bg-[#4B687A] shadow-sm text-white font-serif">
+        
+    </head>
+    <body class="bg-[#E5E3DD]">
+     <div class="navbar bg-[#4B687A] shadow-sm text-white font-serif">
   <div class="navbar-start">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -20,7 +20,7 @@
       <ul
         tabindex="-1"
         class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li><a href="home.html" class=" hover:bg-[#4B687A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bg-orange-700">Home</a></li>
+        <li><a href="index.html" class=" hover:bg-[#4B687A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bg-orange-700">Home</a></li>
          <li><a href="about.html" class=" hover:bg-[#4B687A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bg-orange-700">About</a></li>
         <li><a href="contact.html" class=" hover:bg-[#4B687A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bg-orange-700">Contact</a></li>
       </ul>
@@ -29,7 +29,7 @@
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
-      <li><a href="home.html " class=" hover:bg-[#718c9e] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bg-orange-700">Home</a></li>
+      <li><a href="index.html " class=" hover:bg-[#718c9e] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bg-orange-700">Home</a></li>
       <li><a href="about.html" class=" hover:bg-[#718c9e] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bg-orange-700">About</a></li>
       <li><a href="contact.html" class=" hover:bg-[#718c9e] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bg-orange-700">Contact</a></li>
     </ul>
@@ -40,28 +40,25 @@
       <a id="logOutBtn" class="btn me-5 bg-white text-[#43525d]  hover:bg-[#1a2126] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1a2126]" >Log out</a>
    </div>
 </div>
+<!----------------------------------------------------------------------->
+<div class="hero bg-base-200 min-h-screen bg-[#ede8da]" >
+  <div class="hero-content flex-col lg:flex-row-reverse">
+    <img class="w-full lg:w-1/2"
+      src="assets/sign_in.png"
+      class="max-w-sm rounded-lg shadow-2xl"
+    />
+    <div>
+      <h1 class="text-5xl font-bold">About Us</h1>
+      <p class="py-6">
+       Our Examination System is a web-based platform designed to simplify the process of creating, managing, and taking online exams. The system provides an easy-to-use interface for both students and administrators, ensuring a smooth and efficient examination experience.
 
-
-  <div class="max-w-4xl mx-auto mt-10 bg-white rounded-2xl p-8 shadow-lg">
-
-    <h1 class="text-2xl font-bold text-center mb-6">Exam Result</h1>
-
-    <div id="summary"></div>
-
-    <div class="flex justify-center my-8">
-      <div id="progress"></div>
+Our goal is to enhance the evaluation process by using modern technology to deliver secure, accurate, and fast online assessments.
+      </p>
     </div>
-
-    <p class="text-center text-gray-500 font-medium" id="userMessage"></p>
   </div>
+</div>
+<!----------------------------------------------------------------------->
 
-  <div class="max-w-4xl mx-auto mt-8 " id="review"></div>
-
-  <script src="js/questions.js"></script>
-  <script src="js/result.js"></script>
-  <script src="js/progress.js"></script>
-  <script src="js/question_card.js"></script>
-  <script src="js/result_script.js"></script>
-   <script src="js/nav.js"></script>
-</body>
+<script src="js/nav.js"></script>
+    </body>
 </html>

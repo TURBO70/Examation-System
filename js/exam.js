@@ -1,3 +1,22 @@
+const page = location.pathname;
+
+if (page.includes("exam.html") || page.includes("result.html")) {
+  history.pushState(null, "", location.href);
+
+  window.onpopstate = function () {
+    history.pushState(null, "", location.href);
+  };
+}
+document.addEventListener('DOMContentLoaded', () => {
+  let user = JSON.parse(localStorage.getItem("currentUser")) || [];
+  if ( user.exam_submitted === 'true') {
+    window.location.replace('result.html');
+    return;
+  }
+
+  initExam();
+});
+
 let currentQuestionIndex = 0;
 let userAnswers = [];
 let flaggedQuestions = new Set();
@@ -34,16 +53,21 @@ function initExam() {
 }
 
 
-
 function startTimer() {
   timerInterval = setInterval(() => {
     timeRemaining--;
+
+    if (timeRemaining === 5 * 60) {
+      document.getElementById('my_modal_3').showModal();
+    }
+
     if (timeRemaining <= 0) {
       clearInterval(timerInterval);
       timeRemaining = 0;
       autoSubmit();
       return;
     }
+
     updateTimerDisplay();
   }, 1000);
 
@@ -283,17 +307,16 @@ function updateQuestionNavigation() {
 
 function showSubmitModal() {
   const answered = userAnswers.filter(a => a !== null).length;
+  
   document.getElementById('finalAnsweredCount').textContent = answered;
+  
   document.getElementById('finalTotalQuestions').textContent = questions.length;
-
   document.getElementById('submitModal').showModal();
 }
 
 function confirmSubmit() {
   clearInterval(timerInterval);
   localStorage.setItem('exam_user_answers', JSON.stringify(userAnswers));
-
-
   window.location.href = 'result.html';
 }
 
@@ -303,8 +326,7 @@ function cancelSubmit() {
 
 
 function autoSubmit() {
-  alert('Time is up! Your exam will be submitted automatically.');
-  confirmSubmit();
+  document.getElementById('my_modal_2').showModal();
 }
 
 
@@ -335,3 +357,8 @@ document.addEventListener('DOMContentLoaded', () => {
  
   });
 });
+
+
+function closeModal(id) {
+  document.getElementById(id).close();
+}

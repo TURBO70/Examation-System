@@ -17,8 +17,17 @@
   
 <div class="navbar bg-[#4B687A] shadow-sm text-white font-serif">
   <div class="navbar-start">
+    
     <p class=" text-xl font-[font-mono] m-3">Examy</p>
   </div>
+  <div class="navbar-center hidden lg:flex">
+  </div>
+  <div class="navbar-end ">
+      <a id="signInBtn" class="btn me-5 bg-white text-[#43525d]  hover:bg-[#1a2126] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1a2126]"  >Sign in</a>
+      <a  id="signUpBtn" class="btn     bg-white text-[#43525d]  hover:bg-[#1a2126] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1a2126]"  >Sign up</a>
+      <a id="logOutBtn" class="btn me-5 bg-white text-[#43525d]  hover:bg-[#1a2126] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1a2126]" >Log out</a>
+   </div>
+</div>
   
   
 </div>
@@ -94,6 +103,55 @@
       </div>
     </div>
   </dialog>
+
+
+<dialog id="my_modal_1" class="modal modal-middle">
+  <div class="modal-box">
+    <img src="assets/Success.png" class="w-1/6 m-auto ">
+    <h3 class="text-lg font-bold text-center pt-4">The exam has been submitted successfully.</h3>
+    <p class="py-2 text-center">Your responses have been recorded, and the submission process is complete.</p>
+    <div class="modal-action">
+        <button onclick="confirmSubmit()" class="btn w-1/4 bg-[#4bae4f] text-white px-4 py-2 rounded-full hover:bg-[#307133] m-auto ">Result</button>
+    </div>
+  </div>
+</dialog>
+<!------------------------------------------------>
+
+<dialog id="my_modal_2" class="modal modal-middle">
+  <div class="modal-box">
+    <img src="assets/Time_out.png" class="w-1/6 m-auto ">
+    <h3 class="text-lg font-bold text-center pt-4 text-[#BE1414]">Time out!</h3>
+    <p class="py-2 text-center">Your exam has been submitted automatically. Thank you and we wish you the best of luck.</p>
+    <div class="modal-action">
+        <button onclick="confirmSubmit()" class="btn w-1/4 bg-[#F3C168] text-black px-4 py-2 rounded-full hover:bg-[#c09b5a] m-auto ">Result</button>
+    </div>
+  </div>
+</dialog>
+<!------------------------------------------------------------------>
+<dialog id="my_modal_3" class="modal modal-middle">
+  <div class="modal-box">
+    <img src="assets/warning.png" class="w-1/6 m-auto ">
+    <h3 class="text-lg font-bold text-center pt-4 text-[#C60000]">Warning!</h3>
+    <p class="py-2 text-center">Only 5 minutes remaining,
+               please review your answers before time runs out </p>
+    <div class="modal-action">
+        <button onclick="closeModal('my_modal_3')" class="btn w-1/4 bg-[#F3C168] text-black px-4 py-2 rounded-full hover:bg-[#c09b5a] m-auto " >Continue</button>
+    </div>
+  </div>
+</dialog>
+ 
+<!-------------------------------------------------------------------------->
+<dialog id="my_modal_4" class="modal modal-middle">
+  <div class="modal-box">
+    <img src="assets/Warning2.png" class="w-1/5 m-auto ">
+    <h3 class="text-lg font-bold text-center pt-4 text-[#C60000]">Warning!</h3>
+    <p class="py-2 text-center">You haven’t answered all the questions yet.
+      Please review your answers before submitting and try again  </p>
+    <div class="modal-action">
+        <button onclick="closeModal('my_modal_4')" class="btn w-1/4 bg-[#F3C168] text-black px-4 py-2 rounded-full hover:bg-[#c09b5a] m-auto " >Cancel</button>
+      </div>
+  </div>
+</dialog>
 
   <script src="js/questions.js"></script>
   <script src="js/exam.js"></script>

@@ -22,7 +22,7 @@
       <ul
         tabindex="-1"
         class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li><a href="index.html" class=" hover:bg-[#4B687A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bg-orange-700">Home</a></li>
+        <li><a href="home.html" class=" hover:bg-[#4B687A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bg-orange-700">Home</a></li>
          <li><a href="about.html" class=" hover:bg-[#4B687A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bg-orange-700">About</a></li>
         <li><a href="contact.html" class=" hover:bg-[#4B687A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bg-orange-700">Contact</a></li>
       </ul>
@@ -31,7 +31,7 @@
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
-      <li><a href="index.html " class=" hover:bg-[#718c9e] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bg-orange-700">Home</a></li>
+      <li><a href="home.html " class=" hover:bg-[#718c9e] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bg-orange-700">Home</a></li>
       <li><a href="about.html" class=" hover:bg-[#718c9e] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bg-orange-700">About</a></li>
       <li><a href="contact.html" class=" hover:bg-[#718c9e] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bg-orange-700">Contact</a></li>
     </ul>
@@ -60,6 +60,40 @@
     </div>
   </div>
 </div>
+
+
+<dialog id="my_modal_5" class="modal modal-middle">
+  <div class="modal-box">
+    <h3 class="mb-4 text-xl font-bold text-center">Exam Details</h3>
+      <div class="text-left mb-6 ">
+        <p class="mb-2"><strong>Subject :</strong> Computer science</p>
+        <p class="mb-2"><strong>Duration :</strong> 120 minutes</p>
+        <p class="mb-2"><strong>Number of Questions :</strong> 10 questions</p>
+        <p class="mb-2"><strong>Total Marks :</strong> 100 marks</p>
+        <p class="mb-2"><strong>Passing Marks :</strong> 50 marks</p>
+    <div class="modal-action flex justify-between">
+        <button  id = "cancelExam" class="btn w-1/4 bg-[#F3C168] text-black px-4 py-2 rounded-full hover:bg-[#c09b5a] m-auto " >Cancel</button>
+        <button  id = "confirmStartExam" class="btn w-1/4 bg-[#4bae4f] text-white px-4 py-2 rounded-full hover:bg-[#307133] m-auto" >Start</button>
+
+    </div>
+  </div>
+</dialog>
+
+<dialog id="login_modal" class="modal modal-middle">
+  <div class="modal-box text-center">
+    <h3 class="text-lg font-bold mb-4">Login Required</h3>
+    <p class="mb-6">You must sign in before starting the exam.</p>
+
+    <div class="modal-action justify-center">
+      <button id="goToLogin"
+        class="btn bg-[#4B687A] text-white rounded-full w-1/2">
+        Sign In
+      </button>
+    </div>
+  </div>
+</dialog>
+
+
 
 <script src="js/nav.js"></script>
 <script src="js/home.js"></script>

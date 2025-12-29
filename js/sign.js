@@ -141,7 +141,9 @@ signupForm.addEventListener("submit", function(e){
         return;
     }
 
-    users.push({name : namee.value.trim(), email: email.value.trim(), password:password.value.trim()});
+    users.push({name : namee.value.trim(), email: email.value.trim(), password:password.value.trim(),exam_submitted:false});
+
+  window.location.replace('result.html');
     localStorage.setItem("users", JSON.stringify(users));
    const successAlert = document.getElementById("successAlert");
   successAlert.classList.remove("hidden");
