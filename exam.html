@@ -93,17 +93,6 @@
     </div>
   </div>
 
-  <dialog id="submitModal" class="modal">
-    <div class="modal-box">
-      <h3 class="font-bold text-lg mb-4">Confirm Submission</h3>
-      <p class="mb-4">Are you sure you want to submit your exam? You have answered <span id="finalAnsweredCount">0</span> out of <span id="finalTotalQuestions">10</span> questions.</p>
-      <div class="modal-action">
-        <button class="btn btn-ghost" id="cancelSubmitBtn">Cancel</button>
-        <button class="btn btn-success" id="confirmSubmitBtn">Yes, Submit</button>
-      </div>
-    </div>
-  </dialog>
-
 
 <dialog id="my_modal_1" class="modal modal-middle">
   <div class="modal-box">
@@ -145,7 +134,7 @@
   <div class="modal-box">
     <img src="assets/Warning2.png" class="w-1/5 m-auto ">
     <h3 class="text-lg font-bold text-center pt-4 text-[#C60000]">Warning!</h3>
-    <p class="py-2 text-center">You haven’t answered all the questions yet.
+    <p class="py-2 text-center">You have answered <span id="finalAnsweredCount">0</span> out of <span id="finalTotalQuestions">10</span> questions.
       Please review your answers before submitting and try again  </p>
     <div class="modal-action">
         <button onclick="closeModal('my_modal_4')" class="btn w-1/4 bg-[#F3C168] text-black px-4 py-2 rounded-full hover:bg-[#c09b5a] m-auto " >Cancel</button>

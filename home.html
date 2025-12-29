@@ -72,7 +72,7 @@
         <p class="mb-2"><strong>Total Marks :</strong> 100 marks</p>
         <p class="mb-2"><strong>Passing Marks :</strong> 50 marks</p>
     <div class="modal-action flex justify-between">
-        <button  id = "cancelExam" class="btn w-1/4 bg-[#F3C168] text-black px-4 py-2 rounded-full hover:bg-[#c09b5a] m-auto " >Cancel</button>
+        <button  id="cancelExam" class="btn w-1/4 bg-[#F3C168] text-black px-4 py-2 rounded-full hover:bg-[#c09b5a] m-auto" >Cancel</button>
         <button  id = "confirmStartExam" class="btn w-1/4 bg-[#4bae4f] text-white px-4 py-2 rounded-full hover:bg-[#307133] m-auto" >Start</button>
 
     </div>
@@ -93,6 +93,17 @@
   </div>
 </dialog>
 
+<dialog id="Taken" class="modal modal-middle">
+  <div class="modal-box text-center">
+    <h3 class="text-lg font-bold mb-4">Exam Already Taken</h3>
+    <p class="mb-6">You have already started this exam. You cannot take it again.</p>
+
+    <div class="modal-action justify-center">
+      <button id="cancelExam2" class="btn w-1/4 bg-[#F3C168] text-black px-4 py-2 rounded-full hover:bg-[#c09b5a] m-auto " >Cancel</button>
+      <button id="res_home" class="btn w-1/4 bg-[#4bae4f] text-white px-4 py-2 rounded-full hover:bg-[#307133] m-auto ">Result</button>
+    </div>
+  </div>
+</dialog>
 
 
 <script src="js/nav.js"></script>

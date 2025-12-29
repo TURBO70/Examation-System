@@ -7,7 +7,6 @@ if (page.includes("exam.html") || page.includes("result.html")) {
     history.pushState(null, "", location.href);
   };
 }
-
 const storedAnswers = localStorage.getItem('exam_user_answers');
 const userAnswers = storedAnswers ? JSON.parse(storedAnswers) : new Array(questions.length).fill(null);
 
@@ -21,11 +20,13 @@ questions.forEach((q, i) => {
 const wrong = total - correct;
 const percent = Math.round((correct / total) * 100);
 
-let grade = "F";
+let grade = "F" , msg ="Hard luck";
 if (percent >= 85) grade = "A";
 else if (percent >= 75) grade = "B";
 else if (percent >= 60) grade = "C";
 else if (percent >= 50) grade = "D";
+
+if(percent >= 50) msg="Congratulations";
 
 document.getElementById("summary").innerHTML =
   SummaryComponent(total, correct, wrong, grade);
@@ -39,7 +40,7 @@ if (currentUserJSON) {
   const currentUser = JSON.parse(currentUserJSON);
   const firstName = currentUser.name.trim().split(" ")[0];
   document.getElementById("userMessage").textContent =
-    `Congratulations, ${firstName}`;
+    `${msg}, ${firstName}`;
 }
 
 const review = document.getElementById("review");

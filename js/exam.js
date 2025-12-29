@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  initExam();
+  
 });
 
 let currentQuestionIndex = 0;
@@ -305,19 +305,43 @@ function updateQuestionNavigation() {
 
 }
 
+
 function showSubmitModal() {
   const answered = userAnswers.filter(a => a !== null).length;
+
+  if (answered < questions.length) {
+    document.getElementById('finalAnsweredCount').textContent = answered;
+    document.getElementById('finalTotalQuestions').textContent = questions.length;
+    document.getElementById('my_modal_4').showModal();
+  } else {
+    document.getElementById('my_modal_1').showModal();
+  }
+}
+
+function markExamAsTaken() 
+{
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  currentUser.exam_submitted = true;
+  localStorage.setItem("currentUser", JSON.stringify(currentUser));
+
+  for(ur in users)
+  {
+    if (users[ur].id === currentUser.id)
+    {
+      users[ur].id.exam_submitted=true;
+    }
+  }
   
-  document.getElementById('finalAnsweredCount').textContent = answered;
-  
-  document.getElementById('finalTotalQuestions').textContent = questions.length;
-  document.getElementById('submitModal').showModal();
+  localStorage.setItem("users", JSON.stringify(users));
 }
 
 function confirmSubmit() {
   clearInterval(timerInterval);
   localStorage.setItem('exam_user_answers', JSON.stringify(userAnswers));
   window.location.href = 'result.html';
+   markExamAsTaken();
 }
 
 function cancelSubmit() {

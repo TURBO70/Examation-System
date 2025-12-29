@@ -12,9 +12,11 @@ function initHomePage() {
   }
 
 
-  const startExamBtn = document.getElementById("startExamBtn");
+const startExamBtn = document.getElementById("startExamBtn");
 const examModal = document.getElementById("my_modal_5");
 const cancelExam = document.getElementById("cancelExam");
+const cancelExam2 = document.getElementById("cancelExam2");
+const Taken = document.getElementById("Taken");
 
 startExamBtn.onclick = () => {
   examModal.showModal();
@@ -23,22 +25,35 @@ startExamBtn.onclick = () => {
 cancelExam.onclick = () => {
   examModal.close();
 };
+cancelExam2.onclick = () => {
+  Taken.close();
+};
 
 
 const confirmStartExam = document.getElementById("confirmStartExam");
 const loginModal = document.getElementById("login_modal");
 const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+let user = JSON.parse(localStorage.getItem("currentUser")) || [];
 confirmStartExam.onclick = () => {
   examModal.close();
 
   if (!isLoggedIn) {
     loginModal.showModal();
-  } else {
+  } 
+  else if (user.exam_submitted === true)
+  {
+    Taken.showModal();
+  }
+  else {
     location.replace("exam.html");
   }
 };
 document.getElementById("goToLogin").onclick = () => {
   location.replace("sign_in.html?mode=signin");
+};
+
+document.getElementById("res_home").onclick = () => {
+  location.replace("result.html");
 };
 
 }
