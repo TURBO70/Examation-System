@@ -1,3 +1,13 @@
+ const page = location.pathname;
+
+if (page.includes("exam.html") || page.includes("result.html")) {
+  history.pushState(null, "", location.href);
+
+  window.onpopstate = function () {
+    history.pushState(null, "", location.href);
+  };
+}
+
 const storedAnswers = localStorage.getItem('exam_user_answers');
 const userAnswers = storedAnswers ? JSON.parse(storedAnswers) : new Array(questions.length).fill(null);
 

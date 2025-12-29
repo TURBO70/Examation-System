@@ -24,14 +24,15 @@ body {
 .signup {
     flex: 1;
     padding: 40px;
-     
+    margin: auto;
+   
 }
 
 
 .signin h2 {
-    margin-top: 200px;
+  margin: auto;
+  margin-top: 30%;
     text-align: center;
-    margin-bottom: 10px;
 }
 
 .signin form {
@@ -41,8 +42,7 @@ body {
     background: white;
     transition: 0.9s ease;
     position: relative;
-    margin-left: 200px;
-
+    margin: auto;
 }
 
 /* .signin label {
@@ -59,10 +59,10 @@ body {
 
 
 .signup h2 {
-    margin-top: 50px;
+   
     text-align: center;
-    margin-bottom: 10px;
-    margin-right: 100px;
+     margin-top: 10%;
+    
 } 
 
 
@@ -73,11 +73,15 @@ body {
     background: white;
     transition: 0.9s ease;
     position: relative;
-    margin-left: 100px;
+    margin: auto;
 
 }
 
 .signup, .signin {
+  display: flex;
+flex-direction: column;
+align-content: center;
+justify-content: center;
     background: #ffffff;
     flex: 1;
     position: absolute;
@@ -89,6 +93,9 @@ body {
 }
 
 form {
+  display: flex;
+    flex-direction: column;
+    justify-self: end;
     max-width: 400px;
      position: absolute;
     width: 100%;
