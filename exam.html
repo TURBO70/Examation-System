@@ -42,8 +42,11 @@
             <span id="answeredCount" class="font-bold text-blue-600">0</span>/<span id="totalQuestions" class="font-bold">10</span>
           </span>
           <button class="btn btn-ghost btn-circle" id="bookmarkBtn" title="Flag this question">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <!--<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+            </svg> -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+             <path fill-rule="evenodd" clip-rule="evenodd" d="M5 1C4.44772 1 4 1.44772 4 2V22C4 22.5523 4.44772 23 5 23C5.55228 23 6 22.5523 6 22V15.693L18.8542 10.8727C20.5846 10.2238 20.5846 7.77627 18.8542 7.12739L6 2.30705V2C6 1.44772 5.55228 1 5 1ZM6 4.44305V13.557L17.6526 9.18732C17.8256 9.12243 17.8256 8.87767 17.6526 8.81278L6 4.44305Z" fill="#0F0F0F"/>
             </svg>
           </button>
         </div>
@@ -53,14 +56,14 @@
         <div class="space-y-4" id="optionsContainer"></div>
       </div>
 
-      <div class="flex justify-between gap-6 mt-8">
-        <button class="btn btn-sm flex-1 text-white" style="background-color: #4B687A;" id="prevBtn">
+      <div class="flex justify-between gap-10 mt-8">
+        <button class="btn btn-sm flex-1 text-white h-12" style="background-color: #4B687A;" id="prevBtn">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
           Previous
         </button>
-        <button class="btn btn-sm flex-1 text-white" style="background-color: #4B687A;" id="nextBtn">
+        <button class="btn btn-sm flex-1 text-white h-12" style="background-color: #4B687A;" id="nextBtn">
           Next
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />

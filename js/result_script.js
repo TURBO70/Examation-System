@@ -12,7 +12,7 @@ const userAnswers = storedAnswers ? JSON.parse(storedAnswers) : new Array(questi
 
 const total = questions.length;
 let correct = 0;
-
+const good_sound = new Audio('assets/good.mpeg');
 questions.forEach((q, i) => {
   if (q.correct === userAnswers[i]) correct++;
 });
@@ -26,7 +26,10 @@ else if (percent >= 75) grade = "B";
 else if (percent >= 60) grade = "C";
 else if (percent >= 50) grade = "D";
 
-if(percent >= 50) msg="Congratulations";
+if(percent >= 50)
+  { msg="Congratulations";
+    good_sound.play();
+  }
 
 document.getElementById("summary").innerHTML =
   SummaryComponent(total, correct, wrong, grade);

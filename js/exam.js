@@ -52,12 +52,14 @@ function initExam() {
   updateAnsweredCount();
 }
 
-
+const time_out_sound = new Audio('assets/Time_out.mpeg');
+const tin = new Audio('assets/tin.mpeg');
 function startTimer() {
   timerInterval = setInterval(() => {
     timeRemaining--;
 
     if (timeRemaining === 5 * 60) {
+      tin.play();
       document.getElementById('my_modal_3').showModal();
     }
 
@@ -347,6 +349,7 @@ function cancelSubmit() {
 
 
 function autoSubmit() {
+  time_out_sound.play();
   document.getElementById('my_modal_2').showModal();
 }
 
