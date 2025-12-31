@@ -10,8 +10,9 @@ if (isLoggedIn) {
   logOutBtn.classList.remove('hidden');
 
   logOutBtn.onclick = () => {
+    localStorage.removeItem('currentUser');
     localStorage.setItem('isLoggedIn', 'false');
-    location.reload();
+    location.replace('home.html'); 
   };
 
 } else {

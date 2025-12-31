@@ -123,38 +123,92 @@ const signupForm = document.getElementById("signup-form");
 });
 
 signupForm.addEventListener("submit", function(e){
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!nameRegex.test(namee.value.trim()) ||
-        !emailRegex.test(email.value.trim()) ||
-        !passwordRegex.test(password.value.trim()) ||
-       (confirmPassword.value.trim() !== password.value.trim())
-    ) {
-        return; 
-    }
+  let valid = true;
+
+  
+  const nameVal = namee.value.trim();
+  if (nameVal === "") {
+    NameError.textContent = "Name is required";
+    valid = false;
+  } else if (/\d/.test(nameVal)) {
+    NameError.textContent = "Numbers are not allowed in name";
+    valid = false;
+  } else if (nameVal.length < 3) {
+    NameError.textContent = "Invalid Name (too short)";
+    valid = false;
+  } else if (!nameRegex.test(nameVal)) {
+    NameError.textContent = "Name must be first and last name (e.g. Youssef Mohamed, Eman Refaat)";
+    valid = false;
+  } else {
+    NameError.textContent = "";
+  }
+
+ 
+  const emailVal = email.value.trim();
+  if (emailVal === "") {
+    EmailError.textContent = "Email is required";
+    valid = false;
+  } else if (!emailRegex.test(emailVal)) {
+    EmailError.textContent = "Please enter a valid email address";
+    valid = false;
+  } else {
+    EmailError.textContent = "";
+  }
 
 
-    let users = JSON.parse(localStorage.getItem("users")) || [];
+  const passVal = password.value.trim();
+  if (passVal === "") {
+    PasswordError.textContent = "Password is required";
+    valid = false;
+  } else if (!passwordRegex.test(passVal)) {
+    PasswordError.textContent =
+      "Password must be at least 8 characters, contain one capital letter and one number";
+    valid = false;
+  } else {
+    PasswordError.textContent = "";
+  }
 
-    if (users.some(user => user.email === email.value.trim())) {
-        EmailError.textContent = "Email already exists!";
-        return;
-    }
+  const confirmVal = confirmPassword.value.trim();
+  if (confirmVal === "") {
+    RePasswordError.textContent = "Required";
+    valid = false;
+  } else if (confirmVal !== passVal) {
+    RePasswordError.textContent = "Passwords do not match";
+    valid = false;
+  } else {
+    RePasswordError.textContent = "";
+  }
 
-    users.push({name : namee.value.trim(), email: email.value.trim(), password:password.value.trim(),exam_submitted:false});
+  if (!valid) return;
 
-  window.location.replace('result.html');
-    localStorage.setItem("users", JSON.stringify(users));
-   const successAlert = document.getElementById("successAlert");
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  if (users.some(user => user.email === emailVal)) {
+    EmailError.textContent = "Email already exists!";
+    return;
+  }
+
+  users.push({
+    name: nameVal,
+    email: emailVal,
+    password: passVal,
+    exam_submitted: false
+  });
+
+  localStorage.setItem("users", JSON.stringify(users));
+
+  const successAlert = document.getElementById("successAlert");
   successAlert.classList.remove("hidden");
 
   setTimeout(() => {
     successAlert.classList.add("hidden");
-  }, 3000); 
+  }, 3000);
 
-    signupForm.reset();
-    
+  signupForm.reset();
 });
+
 successAlert.classList.add("hidden");
 /////////////////////////////////////////////////////////////////////////////////////
 const signinForm = document.getElementById("signin-form");
@@ -188,20 +242,45 @@ email2.addEventListener("blur", () => {
 });
 
 signinForm.addEventListener("submit", function(e){
-    e.preventDefault();
+  e.preventDefault();
 
-    let users = JSON.parse(localStorage.getItem("users")) || [];
+  let valid = true;
 
-    const user = users.find(user => user.email === email2.value.trim() && user.password === password2.value.trim());
+  if (email2.value.trim() === "") {
+    EmailError2.textContent = "Email is required";
+    valid = false;
+  } else if (!emailRegex.test(email2.value.trim())) {
+    EmailError2.textContent = "Please enter a valid email address";
+    valid = false;
+  } else {
+    EmailError2.textContent = "";
+  }
 
-    if(user){
-        localStorage.setItem("currentUser", JSON.stringify(user));
-        localStorage.setItem("isLoggedIn", "true");
-        window.location.href = "home.html";
-    } else {
-        PasswordError2.textContent = "Email or password is incorrect!";
-    }
+  if (password2.value.trim() === "") {
+    PasswordError2.textContent = "Password is required";
+    valid = false;
+  } else {
+    PasswordError2.textContent = "";
+  }
+
+  if (!valid) return; 
+
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  const user = users.find(user =>
+    user.email === email2.value.trim() &&
+    user.password === password2.value.trim()
+  );
+
+  if(user){
+    localStorage.setItem("currentUser", JSON.stringify(user));
+    localStorage.setItem("isLoggedIn", "true");
+    window.location.href = "home.html";
+  } else {
+    PasswordError2.textContent = "Email or password is incorrect!";
+  }
 });
+
 
 
 
