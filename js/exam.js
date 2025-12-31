@@ -9,24 +9,24 @@ if (page.includes("exam.html") || page.includes("result.html")) {
 }
 document.addEventListener('DOMContentLoaded', () => {
   let user = JSON.parse(localStorage.getItem("currentUser")) || [];
-  if ( user.exam_submitted === 'true') {
+  if (user.exam_submitted === true || user.exam_submitted === 'true') {
     window.location.replace('result.html');
     return;
   }
 
-  
+
 });
 
 let currentQuestionIndex = 0;
 let userAnswers = [];
 let flaggedQuestions = new Set();
 let examStartTime = null;
-let examDuration = 6 * 60; 
+let examDuration = 6 * 60;
 let timeRemaining = examDuration;
 let timerInterval = null;
 
 let shuffledQuestions = [];
-let originalIndexMap = []; 
+let originalIndexMap = [];
 
 
 
@@ -83,11 +83,11 @@ function updateTimerDisplay() {
 
   const timerElement = document.getElementById('timerDisplay');
 
-  timerElement.textContent = 
+  timerElement.textContent =
     `${String(hours).padStart(2, '0')} : ${String(minutes).padStart(2, '0')} : ${String(seconds).padStart(2, '0')}`;
 
 
-    if (timeRemaining <= 5 * 60) {
+  if (timeRemaining <= 5 * 60) {
     timerElement.classList.add('text-red-600', 'font-extrabold');
   } else {
     timerElement.classList.remove('text-red-600', 'font-extrabold');
@@ -106,7 +106,7 @@ function loadQuestion(index) {
   if (index < 0 || index >= questions.length) return;
 
   currentQuestionIndex = index;
-  const question = shuffledQuestions[index]; 
+  const question = shuffledQuestions[index];
 
   document.getElementById('questionText').textContent = `${index + 1}. ${question.question}`;
 
@@ -116,7 +116,7 @@ function loadQuestion(index) {
 
 
   question.options.forEach((option, i) => {
-  
+
     const div = document.createElement('div');
     div.className = 'flex items-center p-5 border-2 border-gray-400 rounded-xl cursor-pointer transition-all duration-200 hover:border-blue-600 hover:bg-blue-50';
 
@@ -125,8 +125,8 @@ function loadQuestion(index) {
     }
 
     const radio = document.createElement('input');
-  
-  
+
+
     radio.type = 'radio';
     radio.name = 'questionOption';
     radio.value = option;
@@ -134,10 +134,10 @@ function loadQuestion(index) {
     radio.checked = userAnswers[originalIndexMap[index]] === option;
     radio.className = 'radio radio-primary mr-4';
 
-  
+
     const label = document.createElement('label');
     label.htmlFor = `opt-${i}`;
-  
+
     label.className = 'flex-1 cursor-pointer text-lg font-medium text-gray-900';
     label.textContent = option;
 
@@ -145,12 +145,12 @@ function loadQuestion(index) {
 
     div.appendChild(radio);
     div.appendChild(label);
-  
+
     container.appendChild(div);
-  
+
   });
 
-  
+
   updateBookmarkButton();
   updateNavigationButtons();
   updateQuestionNavigation();
@@ -163,7 +163,7 @@ function loadQuestion(index) {
 function selectAnswer(answer) {
 
   const originalIndex = originalIndexMap[currentQuestionIndex];
-  userAnswers[originalIndex] = answer; 
+  userAnswers[originalIndex] = answer;
 
   updateAnsweredCount();
 
@@ -238,7 +238,7 @@ function renderQuestionNavigation() {
   for (let displayIndex = 0; displayIndex < questions.length; displayIndex++) {
     const btn = document.createElement('button');
     btn.className = 'btn w-full h-12 rounded-lg font-bold text-sm flex items-center justify-between px-4 transition-colors duration-200';
-    btn.dataset.displayIndex = displayIndex; 
+    btn.dataset.displayIndex = displayIndex;
 
 
 
@@ -247,7 +247,7 @@ function renderQuestionNavigation() {
     btn.appendChild(textSpan);
 
     const rightSlot = document.createElement('span');
-    rightSlot.className = 'w-8 text-right'; 
+    rightSlot.className = 'w-8 text-right';
     btn.appendChild(rightSlot);
 
 
@@ -264,7 +264,7 @@ function renderQuestionNavigation() {
 function updateQuestionNavigation() {
   const buttons = document.querySelectorAll('#questionNav button');
 
-  
+
   buttons.forEach(btn => {
     const displayIndex = parseInt(btn.dataset.displayIndex);
 
@@ -274,7 +274,7 @@ function updateQuestionNavigation() {
     const rightSlot = btn.querySelector('span:last-child');
 
     textSpan.className = 'text-gray-800';
-  
+
     rightSlot.innerHTML = '';
     rightSlot.className = 'w-8 text-right';
 
@@ -293,14 +293,14 @@ function updateQuestionNavigation() {
 
     if (flaggedQuestions.has(displayIndex)) {
       btn.classList.remove('bg-gray-200', 'bg-success', 'custom-current');
-    
+
       btn.classList.add('bg-warning', 'hover:bg-warning/90');
       textSpan.className = 'text-warning-content';
       rightSlot.innerHTML = '🚩';
       rightSlot.className = 'w-8 text-right text-lg';
     }
-  
-  
+
+
   });
 
 }
@@ -318,30 +318,27 @@ function showSubmitModal() {
   }
 }
 
-function markExamAsTaken() 
-{
+function markExamAsTaken() {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   let users = JSON.parse(localStorage.getItem("users")) || [];
 
   currentUser.exam_submitted = true;
   localStorage.setItem("currentUser", JSON.stringify(currentUser));
 
-  for(ur in users)
-  {
-    if (users[ur].id === currentUser.id)
-    {
-      users[ur].id.exam_submitted=true;
+  for (let ur in users) {
+    if (users[ur].id === currentUser.id) {
+      users[ur].exam_submitted = true;
     }
   }
-  
+
   localStorage.setItem("users", JSON.stringify(users));
 }
 
 function confirmSubmit() {
   clearInterval(timerInterval);
   localStorage.setItem('exam_user_answers', JSON.stringify(userAnswers));
-  window.location.href = 'result.html';
-   markExamAsTaken();
+  window.location.replace('result.html');
+  markExamAsTaken();
 }
 
 function cancelSubmit() {
@@ -369,16 +366,16 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') goToPrevious();
     if (e.key === 'ArrowRight') goToNext();
-  
+
   });
 
-  
+
   window.addEventListener('beforeunload', (e) => {
     if (timeRemaining > 0) {
       e.preventDefault();
       e.returnValue = '';
     }
- 
+
   });
 });
 
