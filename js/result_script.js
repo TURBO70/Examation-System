@@ -10,13 +10,25 @@ if (page.includes("exam.html") || page.includes("result.html")) {
 document.addEventListener('DOMContentLoaded', () => {
   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
   let user = JSON.parse(localStorage.getItem("currentUser")) || [];
-  if (!isLoggedIn ) {
+  if (!isLoggedIn) {
     window.location.replace('home.html');
     return;
   }
-if (user.exam_submitted === false || user.exam_submitted === 'false' ) {
-    window.location.replace('home.html');
-    return;
+  if (user.exam_submitted === false || user.exam_submitted === 'false') {
+    if (user.exam_started === true || user.exam_started === 'true') {
+      user.exam_submitted = true;
+      localStorage.setItem("currentUser", JSON.stringify(user));
+
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+      const userIndex = users.findIndex(u => u.email === user.email);
+      if (userIndex !== -1) {
+        users[userIndex] = user;
+        localStorage.setItem("users", JSON.stringify(users));
+      }
+    } else {
+      window.location.replace('home.html');
+      return;
+    }
   }
 
 });
