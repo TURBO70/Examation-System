@@ -320,27 +320,27 @@ function showSubmitModal() {
   }
 }
 
-function markExamAsTaken() {
+function saveExamResult() {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  let users = JSON.parse(localStorage.getItem("users")) || [];
+  if (currentUser) {
+    currentUser.exam_submitted = true;
+    currentUser.exam_answers = userAnswers;
+    localStorage.setItem("currentUser", JSON.stringify(currentUser));
 
-  currentUser.exam_submitted = true;
-  localStorage.setItem("currentUser", JSON.stringify(currentUser));
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    const userIndex = users.findIndex(u => u.email === currentUser.email);
 
-  for (let ur in users) {
-    if (users[ur].id === currentUser.id) {
-      users[ur].exam_submitted = true;
+    if (userIndex !== -1) {
+      users[userIndex] = currentUser;
+      localStorage.setItem("users", JSON.stringify(users));
     }
   }
-
-  localStorage.setItem("users", JSON.stringify(users));
 }
 
 function confirmSubmit() {
   clearInterval(timerInterval);
-  localStorage.setItem('exam_user_answers', JSON.stringify(userAnswers));
+  saveExamResult();
   window.location.replace('result.html');
-  markExamAsTaken();
 }
 
 function cancelSubmit() {
