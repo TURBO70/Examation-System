@@ -1,26 +1,30 @@
 const page = location.pathname;
 let backLocked = false;
 if (page.includes("exam.html")) {
-  history.pushState(null, "", location.href);
 
-  window.addEventListener("popstate", () => {
+  history.pushState({ exam: true }, "", location.href);
 
-    if (backLocked) {
-      history.pushState(null, "", location.href);
-      return;
+  window.addEventListener("popstate", (e) => {
+    history.pushState({ exam: true }, "", location.href);
+
+    const modal = document.getElementById("exitConfirmModal");
+
+    if (!modal.open) {
+      modal.showModal();
     }
-
-    backLocked = true;
-    document.getElementById("exitConfirmModal").showModal();
-    history.pushState(null, "", location.href);
   });
 }
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
   let user = JSON.parse(localStorage.getItem("currentUser")) || [];
   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-  if (user.exam_submitted === true || user.exam_submitted === 'true' || !isLoggedIn) {
+  if (!isLoggedIn ) {
+    window.location.replace('home.html');
+    return;
+  }
+  if (user.exam_submitted === true || user.exam_submitted === 'true' ) {
     window.location.replace('result.html');
     return;
   }
