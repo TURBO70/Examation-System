@@ -19,7 +19,8 @@ if (page.includes("exam.html")) {
 
 document.addEventListener('DOMContentLoaded', () => {
   let user = JSON.parse(localStorage.getItem("currentUser")) || [];
-  if (user.exam_submitted === true || user.exam_submitted === 'true') {
+  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  if (user.exam_submitted === true || user.exam_submitted === 'true' || !isLoggedIn) {
     window.location.replace('result.html');
     return;
   }

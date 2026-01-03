@@ -38,7 +38,6 @@ else if (percent >= 50) grade = "D";
 
 if (percent >= 50) {
   msg = "Congratulations";
-  good_sound.play();
 }
 
 document.getElementById("summary").innerHTML =
