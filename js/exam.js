@@ -1,34 +1,53 @@
 const page = location.pathname;
 let backLocked = false;
-if (page.includes("exam.html")) {
-
-  history.pushState({ exam: true }, "", location.href);
-
-  window.addEventListener("popstate", (e) => {
-    history.pushState({ exam: true }, "", location.href);
-
-    const modal = document.getElementById("exitConfirmModal");
-
-    if (!modal.open) {
-      modal.showModal();
-    }
-  });
-}
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
-  let user = JSON.parse(localStorage.getItem("currentUser")) || [];
-  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-  if (!isLoggedIn ) {
-    window.location.replace('home.html');
-    return;
+  if (page.includes("exam.html")) {
+    history.pushState({ exam: true }, "", location.href);
+
+    window.addEventListener("popstate", (e) => {
+      e.preventDefault();
+      history.pushState({ exam: true }, "", location.href);
+
+      const modal = document.getElementById("exitConfirmModal");
+      if (modal && !modal.open) {
+        modal.showModal();
+      }
+    });
   }
-  if (user.exam_submitted === true || user.exam_submitted === 'true' ) {
+
+  let user = JSON.parse(localStorage.getItem("currentUser")) || {};
+
+  if (user.exam_submitted === true || user.exam_submitted === 'true') {
     window.location.replace('result.html');
     return;
   }
 
+  if (user.exam_started === true || user.exam_started === 'true') {
+
+    user.exam_submitted = true;
+    localStorage.setItem("currentUser", JSON.stringify(user));
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    const userIndex = users.findIndex(u => u.email === user.email);
+    if (userIndex !== -1) {
+      users[userIndex] = user;
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+
+    window.location.replace('result.html');
+    return;
+  }
+
+  user.exam_started = true;
+  localStorage.setItem("currentUser", JSON.stringify(user));
+
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  const userIndex = users.findIndex(u => u.email === user.email);
+  if (userIndex !== -1) {
+    users[userIndex] = user;
+    localStorage.setItem("users", JSON.stringify(users));
+  }
 
 });
 
@@ -362,19 +381,9 @@ function cancelSubmit() {
   document.getElementById('submitModal').close();
 }
 
-function stayInExam() {
-    backLocked = false;
-  document.getElementById("exitConfirmModal").close();
-}
 
-function confirmExitExam() {
-  backLocked = true;
-  document.getElementById("exitConfirmModal").close();
-  clearInterval(timerInterval);
-  saveExamResult();
-  window.location.replace("home.html");
-}
 function autoSubmit() {
+  time_out_sound.play();
   document.getElementById('my_modal_2').showModal();
 }
 
@@ -400,7 +409,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('beforeunload', (e) => {
     if (timeRemaining > 0) {
-       saveExamResult();
       e.preventDefault();
       e.returnValue = '';
     }
@@ -411,4 +419,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function closeModal(id) {
   document.getElementById(id).close();
+}
+
+function stayInExam() {
+  document.getElementById("exitConfirmModal").close();
+}
+
+function confirmExitExam() {
+  confirmSubmit();
 }
