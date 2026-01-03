@@ -7,6 +7,15 @@ if (page.includes("exam.html") || page.includes("result.html")) {
     history.pushState(null, "", location.href);
   };
 }
+document.addEventListener('DOMContentLoaded', () => {
+  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  if (!isLoggedIn ) {
+    window.location.replace('home.html');
+    return;
+  }
+
+
+});
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 const storedAnswers = currentUser ? currentUser.exam_answers : null;
 const userAnswers = storedAnswers ? storedAnswers : new Array(questions.length).fill(null);

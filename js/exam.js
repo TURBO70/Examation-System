@@ -1,12 +1,22 @@
 const page = location.pathname;
-
-if (page.includes("exam.html") || page.includes("result.html")) {
+let backLocked = false;
+if (page.includes("exam.html")) {
   history.pushState(null, "", location.href);
 
-  window.onpopstate = function () {
+  window.addEventListener("popstate", () => {
+
+    if (backLocked) {
+      history.pushState(null, "", location.href);
+      return;
+    }
+
+    backLocked = true;
+    document.getElementById("exitConfirmModal").showModal();
     history.pushState(null, "", location.href);
-  };
+  });
 }
+
+
 document.addEventListener('DOMContentLoaded', () => {
   let user = JSON.parse(localStorage.getItem("currentUser")) || [];
   if (user.exam_submitted === true || user.exam_submitted === 'true') {
@@ -347,9 +357,19 @@ function cancelSubmit() {
   document.getElementById('submitModal').close();
 }
 
+function stayInExam() {
+    backLocked = false;
+  document.getElementById("exitConfirmModal").close();
+}
 
+function confirmExitExam() {
+  backLocked = true;
+  document.getElementById("exitConfirmModal").close();
+  clearInterval(timerInterval);
+  saveExamResult();
+  window.location.replace("home.html");
+}
 function autoSubmit() {
-  time_out_sound.play();
   document.getElementById('my_modal_2').showModal();
 }
 
@@ -375,6 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('beforeunload', (e) => {
     if (timeRemaining > 0) {
+       saveExamResult();
       e.preventDefault();
       e.returnValue = '';
     }
