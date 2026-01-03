@@ -40,9 +40,8 @@ function initHomePage() {
     if (!isLoggedIn) {
       loginModal.showModal();
     }
-    else if (user.exam_submitted === true || user.exam_submitted === 'true') 
-    {
-       Taken.showModal();
+    else if (user.exam_submitted === true || user.exam_submitted === 'true' || user.exam_started === true || user.exam_started === 'true') {
+      Taken.showModal();
     }
     else {
       location.replace("exam.html");
@@ -53,7 +52,7 @@ function initHomePage() {
   };
 
   document.getElementById("res_home").onclick = () => {
-    location.href="result.html";
+    location.href = "result.html";
   };
 
 }
