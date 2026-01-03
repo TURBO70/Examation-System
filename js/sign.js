@@ -1,3 +1,12 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  if (isLoggedIn ) {
+    window.location.replace('home.html');
+    return;
+  }
+});
+
+
 const container = document.querySelector(".container");
 const btn = document.querySelector(".signin-btn");
 const forms = document.querySelectorAll("form");

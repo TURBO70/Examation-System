@@ -9,11 +9,15 @@ if (page.includes("exam.html") || page.includes("result.html")) {
 }
 document.addEventListener('DOMContentLoaded', () => {
   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  let user = JSON.parse(localStorage.getItem("currentUser")) || [];
   if (!isLoggedIn ) {
     window.location.replace('home.html');
     return;
   }
-
+if (user.exam_submitted === false || user.exam_submitted === 'false' ) {
+    window.location.replace('home.html');
+    return;
+  }
 
 });
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
